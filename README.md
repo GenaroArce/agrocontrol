@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AgroControl 🚜 - Sistema de Gestión de Órdenes Agrícolas
 
-## Getting Started
+![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=flat&logo=typescript)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-3.0-38bdf8?style=flat&logo=tailwind-css)
+![ExcelJS](https://img.shields.io/badge/ExcelJS-Export-green)
 
-First, run the development server:
+**AgroForm** es una aplicación web profesional (PWA) diseñada para automatizar la generación de Órdenes de Trabajo agrícolas. Reemplaza el llenado manual de planillas de Excel por un sistema digital inteligente que calcula dosis, sincroniza tablas de coadyuvantes y genera archivos `.xlsx` con formato perfecto para impresión o envío.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Características Principales
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+* **Generación de Excel "Pixel-Perfect":** Utiliza una plantilla base (`plantilla.xlsx`) para respetar logotipos, colores, celdas combinadas y formatos originales de la empresa.
+* **Sistema de Doble Tabla:**
+    * **Tabla Principal:** Gestión de 5 productos principales (Columnas C a G) con cálculo de Dosis x Hectárea.
+    * **Tabla de Coadyuvantes:** Gestión independiente de 3 coadyuvantes (Columnas H a J) con nombres personalizables.
+* **Cálculos Inteligentes (Total Real):**
+    * El sistema suma automáticamente las filas de resultados (celdas grises) para dar el total exacto de litros/kilos a comprar, ignorando las dosis unitarias.
+    * Suma automática de hectáreas totales.
+* **Interfaz Responsiva:** Diseñada con **Tailwind CSS** para un uso fluido tanto en PC como en dispositivos móviles en el campo.
+* **Seguridad de Datos:** Fórmulas de Excel incrustadas (`IF(ISNUMBER...)`) para evitar errores como `#VALUE!` o `NaN` en el archivo final.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🛠️ Tecnologías
 
-To learn more about Next.js, take a look at the following resources:
+* **Framework:** [Next.js 14](https://nextjs.org/) (App Router)
+* **Lenguaje:** [TypeScript](https://www.typescriptlang.org/)
+* **Estilos:** [Tailwind CSS](https://tailwindcss.com/) + [shadcn/ui](https://ui.shadcn.com/)
+* **Motor Excel:** [ExcelJS](https://github.com/exceljs/exceljs)
+* **Iconos:** [Lucide React](https://lucide.dev/)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 💼 ¿Necesitas este sistema para tu empresa?
 
-## Deploy on Vercel
+Si te interesa implementar este software pero utilizas una planilla de Excel diferente, contáctame.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Puedo adaptar el código para que funcione 100% a medida con el formato, logotipos y cálculos específicos de tu campo o empresa.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+📩 Contacto: genaroarcee@gmail.com
+
+---
+
+## 📄 Licencia
+
+- Software desarrollado para gestión agricola profesional.
+- © Genaro Arce
