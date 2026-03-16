@@ -76,13 +76,13 @@ export default function OrdenTrabajoApp() {
         
         if (field === 'dosis' && indexArray !== undefined) {
             const nuevasDosis = [...f.dosis];
-            nuevasDosis[indexArray] = value === '' ? 0 : value;
+            nuevasDosis[indexArray] = value;
             return { ...f, dosis: nuevasDosis };
         }
 
         if (field === 'coadyuvantes' && indexArray !== undefined) {
             const nuevosCoad = [...f.coadyuvantes];
-            nuevosCoad[indexArray] = value === '' ? 0 : value;
+            nuevosCoad[indexArray] = value;
             return { ...f, coadyuvantes: nuevosCoad };
         }
 
@@ -150,14 +150,14 @@ export default function OrdenTrabajoApp() {
 
         fila.dosis.forEach((val, idx) => {
             const col = EXCEL_CONFIG.colsProductos[idx];
-            rowWhite.getCell(col).value = (val === 0 || val === '0') ? null : Number(val);
+            rowWhite.getCell(col).value = (val === 0 || val === '0' || val === '' || val === null) ? null : Number(val);
             const cellAddr = rowWhite.getCell(col).address;
             rowGrey.getCell(col).value = { formula: `IF(ISNUMBER(${cellAddr}), ${cellAddr}*${refHas}, 0)` };
         });
 
         fila.coadyuvantes.forEach((val, idx) => {
             const col = EXCEL_CONFIG.colsCoadyuvantes[idx];
-            rowWhite.getCell(col).value = (val === 0 || val === '0') ? null : Number(val);
+            rowWhite.getCell(col).value = (val === 0 || val === '0' || val === '' || val === null) ? null : Number(val);
             const cellAddr = rowWhite.getCell(col).address;
             rowGrey.getCell(col).value = { formula: `IF(ISNUMBER(${cellAddr}), ${cellAddr}*${refHas}, 0)` };
         });
@@ -272,7 +272,7 @@ export default function OrdenTrabajoApp() {
                                 </td>
                                 {fila.dosis.map((d, idx) => (
                                     <td key={idx} className="p-1 border-l border-slate-100">
-                                        <Input type="number" value={d || ''} onChange={(e) => handleFilaChange(fila.id, 'dosis', parseFloat(e.target.value), idx)} className="h-8 text-center text-slate-600" placeholder="-"/>
+                                        <Input type="text" inputMode="decimal" value={d === 0 ? '' : d} onChange={(e) => handleFilaChange(fila.id, 'dosis', e.target.value, idx)} className="h-8 text-center text-slate-600" placeholder="-"/>
                                     </td>
                                 ))}
                                 <td className="p-1 text-center"><button onClick={() => eliminarFila(fila.id)} className="text-slate-300 hover:text-red-500"><Trash2 size={16}/></button></td>
@@ -305,7 +305,7 @@ export default function OrdenTrabajoApp() {
                                 <td className="p-2 font-medium text-slate-700 bg-slate-50 border-r">{fila.campo}</td>
                                 {fila.coadyuvantes.map((val, idx) => (
                                     <td key={idx} className="p-2 border-l border-slate-100">
-                                        <Input type="number" value={val || ''} onChange={(e) => handleFilaChange(fila.id, 'coadyuvantes', parseFloat(e.target.value), idx)} className="h-8 text-center border-yellow-100 focus:border-yellow-400" placeholder="-"/>
+                                        <Input type="text" inputMode="decimal" value={val === 0 ? '' : val} onChange={(e) => handleFilaChange(fila.id, 'coadyuvantes', e.target.value, idx)} className="h-8 text-center border-yellow-100 focus:border-yellow-400" placeholder="-"/>
                                     </td>
                                 ))}
                             </tr>
